@@ -41,3 +41,7 @@ func (p *PDF) DrawText(text string, style string) {
 	p.Fpdf.WriteAligned(0, lineHt, text, gofpdf.AlignLeft)
 	p.Move(0, lineHt*2.0)
 }
+
+func (p *PDF) OutputFile(fileName string) error {
+	return p.Fpdf.OutputFileAndClose(fileName)
+}

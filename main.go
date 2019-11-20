@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/ioutil"
+	"log"
 	"os"
 
 	"github.com/jung-kurt/gofpdf"
@@ -39,7 +40,10 @@ func main() {
 		if node.Type == blackfriday.Text && node.Parent.Type != blackfriday.Heading {
 			if node.Parent.Type == blackfriday.Strong {
 				pdf.DrawText(string(node.Literal), "B")
+			} else if node.Parent.Type == blackfriday.Emph {
+				pdf.DrawText(string(node.Literal), "I")
 			} else {
+				log.Println(node.Parent.Type)
 				pdf.DrawText(string(node.Literal), "")
 			}
 		} else if node.Type == blackfriday.Heading {

@@ -8,3 +8,7 @@
 This is a simple text without anything strange
 
 This is a text with a **bold** crazy!
+
+This is a text with a *Italic* word!
+
+This is a text with a ~~Strikethrough~~

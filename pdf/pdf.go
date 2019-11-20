@@ -42,6 +42,7 @@ func (p *PDF) DrawText(text string, style string) {
 	p.Move(0, lineHt*2.0)
 }
 
+// OutputFile just call the specific call from the library for output and create the pdf file
 func (p *PDF) OutputFile(fileName string) error {
 	return p.Fpdf.OutputFileAndClose(fileName)
 }

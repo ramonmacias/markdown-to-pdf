@@ -21,6 +21,7 @@ const (
 	headerH6 = 8
 )
 
+// GetSizeHeader give use the size depending of which kind of header we ask for
 func GetSizeHeader(level int) float64 {
 	switch level {
 	case 1:
@@ -40,10 +41,12 @@ func GetSizeHeader(level int) float64 {
 	}
 }
 
+// Markdown is the struct that defines what is a markdown file
 type Markdown struct {
 	root *blackfriday.Node
 }
 
+// ParseFile from a filename we create a new Markdown object
 func ParseFile(fileName string) (markdown Markdown, err error) {
 	f, err := os.Open(fileName)
 	if err != nil {
@@ -54,6 +57,7 @@ func ParseFile(fileName string) (markdown Markdown, err error) {
 	return Parse(f)
 }
 
+// Parse from a reader interface we create a new Markdown object
 func Parse(r io.Reader) (markdown Markdown, err error) {
 	b, err := ioutil.ReadAll(r)
 	if err != nil {
@@ -65,6 +69,8 @@ func Parse(r io.Reader) (markdown Markdown, err error) {
 	return markdown, nil
 }
 
+// ConvertToPDF go through all the tree with the information of this markdown file
+// and generate a pdf file trying to keep the same information and format
 func (m *Markdown) ConvertToPDF() (pdfFile pdf.PDF, err error) {
 	fpdf := gofpdf.New(gofpdf.OrientationPortrait, gofpdf.UnitPoint, gofpdf.PageSizeA4, "")
 	fpdf.AddPage()

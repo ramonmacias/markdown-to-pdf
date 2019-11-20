@@ -10,6 +10,20 @@ type PDF struct {
 	X, Y float64
 }
 
+// DefaultPDF build a default PDF with a default options
+func DefaultPDF() (pdf PDF) {
+	fpdf := gofpdf.New(gofpdf.OrientationPortrait, gofpdf.UnitPoint, gofpdf.PageSizeA4, "")
+	fpdf.AddPage()
+	pdfFile := PDF{
+		Fpdf: fpdf,
+	}
+
+	fpdf.SetFont("times", "B", 10)
+	fpdf.SetTextColor(50, 50, 50)
+	pdfFile.MoveAbs(0, 100)
+	return pdfFile
+}
+
 // Move moves the currrent cursor to a specific position from the current one
 func (p *PDF) Move(xDelta, yDelta float64) {
 	p.X, p.Y = p.X+xDelta, p.Y+yDelta

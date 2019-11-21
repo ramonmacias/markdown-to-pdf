@@ -8,7 +8,7 @@ import (
 
 // Flags for setup the program
 var (
-	inputFile      = flag.String("input-file", "samples/MARKDOWN_SAMPLES", "Use this flag to setup an entry file name")
+	inputFile      = flag.String("input-file", "README", "Use this flag to setup an entry file name")
 	outputFile     = flag.String("output-file", "output", "Use this flag to setup an output file name")
 	parserProvider = flag.String("parser-provider", "blackfriday", "Define which markdown parser provider want to use")
 )

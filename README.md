@@ -19,7 +19,7 @@ due that you will have the entire control of the each component of the translati
 # Code insights
 
 The current Go status for packages that help to make this conversion is limited in Go, this is why I used a flexible structure using interfaces, on this
-way you can try to achieve a solution making combination between different markdown and pdf parsers, or even you can create you own parser. If you inside
+way you can try to achieve a solution making combination between different markdown and pdf parsers, or even you can create you own parser. If you take a look inside
 the parser package you will see there the tests applied to both options, inside the testdata folder you have the markdowns files used for launch the tests
 and the results applying both options.
 

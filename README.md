@@ -13,7 +13,7 @@ this API is free to use but if you want to massive convert markdown files into p
 and use two packages based in Go, the main problem is that you need to code all the translation between both, is probably the best option to follow
 due that you will have the entire control of the each component of the translation flow, but you will need a lot more time to do it.
 
-**BE AWARE BOTH OPTIONS NOT WORKS FOR A PRODUCTION ENVIRONMENT**
+**BE AWARE YOU CAN'T USE ANY OPTIONS FOR A PRODUCTION ENVIRONMENT**
 
 
 # Code insights
@@ -60,3 +60,13 @@ So a sample of how you can run this program can be
 ```
 go run main.go -input-file=README -output-file=output -parser-provider=gomarkdown  
 ```
+
+# TODO
+
+This is a small project and part of a tech test, so there is still a lot of thinks to do
+
+* Add more unit testing
+* In both options there is a lot of things that don't work properly so need to be fixed
+* Explore new packages to use as a parsers
+* Use go modules as dependency system
+* Build my own markdown and pdf parser

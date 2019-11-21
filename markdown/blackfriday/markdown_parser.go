@@ -71,6 +71,7 @@ func Parse(r io.Reader) (markdown Markdown, err error) {
 // ConvertToPDF go through all the tree with the information of this markdown file
 // and generate a pdf file trying to keep the same information and format
 func (m Markdown) ConvertToPDF() (pdfFile pdf.PdfParser, err error) {
+	// TODO we need to decouple this gofpdf package from the blackfriday package
 	pdfFile = gofpdf.DefaultPDF()
 
 	// We go through the tree that represents the markdown file

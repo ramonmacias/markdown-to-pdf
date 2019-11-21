@@ -10,6 +10,7 @@ import (
 	"github.com/ramonmacias/markdown-to-pdf/pdf/pdfshift"
 )
 
+// Markdown is the struct that defines what is a markdown file
 type Markdown struct {
 	mdToHTML []byte
 }
@@ -36,6 +37,8 @@ func Parse(r io.Reader) (md Markdown, err error) {
 	return md, nil
 }
 
+// ConvertToPDF just create a new pdf parser with the information need it to build
+// a new PDF on that case using an html file
 func (m Markdown) ConvertToPDF() (pdfFile pdf.PdfParser, err error) {
 	pdfFile = pdfshift.PDF{Html: m.mdToHTML}
 	return pdfFile, err

@@ -3,9 +3,7 @@ package main
 import (
 	"flag"
 
-	"github.com/ramonmacias/markdown-to-pdf/markdown"
-	"github.com/ramonmacias/markdown-to-pdf/markdown/blackfriday"
-	"github.com/ramonmacias/markdown-to-pdf/markdown/gomarkdown"
+	"github.com/ramonmacias/markdown-to-pdf/parser"
 )
 
 // Flags for setup the program
@@ -17,30 +15,13 @@ var (
 
 func main() {
 	flag.Parse()
-	var md markdown.MarkdownParser
-	var err error
 
-	switch *parserProvider {
-	case "blackfriday":
-		md, err = blackfriday.ParseFile(*inputFile + ".md")
-		if err != nil {
-			panic(err)
-		}
-	case "gomarkdown":
-		md, err = gomarkdown.ParseFile(*inputFile + ".md")
-		if err != nil {
-			panic(err)
-		}
-	default:
-		panic("Parser provider not allowed")
-	}
+	err := parser.Parse(parser.Option{
+		InputFileName:  *inputFile,
+		OutputFileName: *outputFile,
+		ParserProvider: *parserProvider,
+	})
 
-	pdfFile, err := md.ConvertToPDF()
-	if err != nil {
-		panic(err)
-	}
-
-	err = pdfFile.OutputFile(*outputFile + ".pdf")
 	if err != nil {
 		panic(err)
 	}

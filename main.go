@@ -5,6 +5,7 @@ import (
 
 	"github.com/ramonmacias/markdown-to-pdf/markdown"
 	"github.com/ramonmacias/markdown-to-pdf/markdown/blackfriday"
+	"github.com/ramonmacias/markdown-to-pdf/markdown/gomarkdown"
 )
 
 // Flags for setup the program
@@ -22,6 +23,11 @@ func main() {
 	switch *parserProvider {
 	case "blackfriday":
 		md, err = blackfriday.ParseFile(*inputFile + ".md")
+		if err != nil {
+			panic(err)
+		}
+	case "gomarkdown":
+		md, err = gomarkdown.ParseFile(*inputFile + ".md")
 		if err != nil {
 			panic(err)
 		}

@@ -6,5 +6,5 @@ import (
 
 // MarkdownParser define the behaviour of every different markdown parser
 type MarkdownParser interface {
-	ConvertToPDF() (pdfFile pdf.PDF, err error)
+	ConvertToPDF() (pdfFile pdf.PdfParser, err error)
 }

@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/ramonmacias/markdown-to-pdf/pdf"
+	"github.com/ramonmacias/markdown-to-pdf/pdf/gofpdf"
 	"gopkg.in/russross/blackfriday.v2"
 )
 
@@ -69,8 +70,8 @@ func Parse(r io.Reader) (markdown Markdown, err error) {
 
 // ConvertToPDF go through all the tree with the information of this markdown file
 // and generate a pdf file trying to keep the same information and format
-func (m Markdown) ConvertToPDF() (pdfFile pdf.PDF, err error) {
-	pdfFile = pdf.DefaultPDF()
+func (m Markdown) ConvertToPDF() (pdfFile pdf.PdfParser, err error) {
+	pdfFile = gofpdf.DefaultPDF()
 
 	// We go through the tree that represents the markdown file
 	m.root.Walk(func(node *blackfriday.Node, entering bool) blackfriday.WalkStatus {
